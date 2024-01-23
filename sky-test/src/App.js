@@ -1,9 +1,8 @@
-import { Search } from "./Components/Search/Search";
-
+import { AppRoutes } from "./AppRoutes";
 
 function App() {
   return (
-    <Search />
+    <AppRoutes />
   );
 }
 
