@@ -1,5 +1,22 @@
 import styled from "styled-components";
 
+export const MainSearch = styled.div`
+    position: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 0;
+    max-width: 1178px;
+    margin: 0 auto;
+    padding: 31px 10px 0px;
+`
+
+export const SearchLogoIcon = styled.img`
+    width: 54px;
+    height: auto;
+`
+
 export const SearchForm = styled.form`
     margin-left: 60px;
     max-width: 1044px;
