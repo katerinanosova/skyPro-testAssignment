@@ -1,9 +1,9 @@
+import { Search } from "./Components/Search/Search";
 
 
 function App() {
   return (
-    <div className="App">Привет
-    </div>
+    <Search />
   );
 }
 
