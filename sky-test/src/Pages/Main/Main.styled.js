@@ -15,3 +15,20 @@ export const Container = styled.div`
   margin: 0 auto;
   background-color: #ffffff;
 `;
+
+export const MainContent = styled.div`
+width: 100%;
+max-width: 1178px;
+overflow: auto;
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+column-gap: 26px;
+row-gap: 40px;
+margin: 20px auto;
+padding: 31px 10px 0px;
+overflow-y: scroll;
+scrollbar-width: none;
+&::-webkit-scrollbar {
+  display: none;
+}
+`

@@ -4,17 +4,18 @@ import * as S from './Search.styled';
 
 export const Search = (
     // { searchUserByLogin, setSearchUserByLogin }
+    { setFoundUsers }
     ) => {
 
     const [searchUserByLogin, setSearchUserByLogin] = useState('');
 
     
 
-    const handleSearch = () => {
-
+    const handleSearch = (e) => {
+        e.preventDefault();
         if (searchUserByLogin.length > 0) {
             getUsers(searchUserByLogin)
-            .then((users) => {console.log(users);})
+            .then((users) => {setFoundUsers(users);})
             .catch((error) => {console.error('Ошибка при выполнении запроса:', error)})
         }
     }
@@ -31,8 +32,7 @@ export const Search = (
                     value={searchUserByLogin}
                     onChange={(e) => setSearchUserByLogin(e.target.value)}
                 />
-                <S.SearchButton type='submit' onClick={(e) => {e.preventDefault()
-                handleSearch()}} >Найти</S.SearchButton>
+                <S.SearchButton type='submit' onClick={(e) => handleSearch(e)} >Найти</S.SearchButton>
             </S.SearchForm>
         </S.MainSearch>
     )
