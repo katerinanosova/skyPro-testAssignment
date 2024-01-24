@@ -32,8 +32,10 @@ height: ${({ $sortIsVisible }) => ($sortIsVisible ? "45px" : "0")};
 `
 
 export const SortListItem = styled.div`
+color: ${({ $isActive }) => ($isActive ? "#009EE4" : "black")};
+
 &:hover {
-    text-decoration: underline;
+    text-decoration: ${({ $isActive }) => ($isActive ? "none" : "underline")};
     cursor: pointer;
   }
 `
