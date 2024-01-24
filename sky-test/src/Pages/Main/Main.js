@@ -25,7 +25,7 @@ export const Main = () => {
                 setSearchUserByLogin={setSearchUserByLogin} searchUserByLogin={searchUserByLogin}
                 setFoundUsers={setFoundUsers}
                 />
-                {foundUsers ? <SearchResult count={foundUsers?.total_count} query={query} /> : ''}
+                {foundUsers ? <SearchResult count={foundUsers?.total_count} query={query} setFoundUsers={setFoundUsers} /> : ''}
                 <S.MainContent>
                     {foundUsers?.items.map((user) => (
                         <UserCard key={user.id} user={user} />))
