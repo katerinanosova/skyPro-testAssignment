@@ -15,6 +15,7 @@ export const MainSearch = styled.div`
 export const SearchLogoIcon = styled.img`
     width: 54px;
     height: auto;
+    cursor: pointer;
 `
 
 export const SearchForm = styled.form`

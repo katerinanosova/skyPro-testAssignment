@@ -1,16 +1,8 @@
-import { useEffect, useState } from 'react';
 import { getUsers } from '../../API/userLoginApi';
 import * as S from './Search.styled';
 
-export const Search = (
-    // { searchUserByLogin, setSearchUserByLogin }
-    { setFoundUsers }
-    ) => {
-
-    const [searchUserByLogin, setSearchUserByLogin] = useState('');
-
+export const Search = ({ searchUserByLogin, setSearchUserByLogin, setFoundUsers }) => {
     
-
     const handleSearch = (e) => {
         e.preventDefault();
         if (searchUserByLogin.length > 0) {
@@ -19,12 +11,15 @@ export const Search = (
             .catch((error) => {console.error('Ошибка при выполнении запроса:', error)})
         }
     }
-
     
+    const clearSearch = () => {
+        setSearchUserByLogin('');
+        setFoundUsers();
+    }
 
     return (
         <S.MainSearch>
-            <S.SearchLogoIcon src='/img/logo.png' />
+            <S.SearchLogoIcon src='/img/logo.png' onClick={() => clearSearch()} />
             <S.SearchForm>
                 <S.SearchText
                     type='search'

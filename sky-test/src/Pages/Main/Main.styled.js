@@ -23,9 +23,9 @@ overflow: auto;
 display: grid;
 grid-template-columns: repeat(5, 1fr);
 column-gap: 26px;
-row-gap: 40px;
+row-gap: 55px;
 margin: 20px auto;
-padding: 31px 10px 0px;
+padding: 31px 0px 0px;
 overflow-y: scroll;
 scrollbar-width: none;
 &::-webkit-scrollbar {
