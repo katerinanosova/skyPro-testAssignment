@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import * as S from './UserProfile.styled'
 import { useEffect, useState } from 'react';
 import { getUserByID, getUserRepos } from '../../API/userLoginApi';
@@ -8,6 +8,7 @@ import { LoaderUserProfile } from '../../Components/Loaders/LoaderUserProfile';
 export const UserProfile = () => {
 
     const params = useParams();
+    const navigate = useNavigate();
     const [userData, setUserData] = useState(null);
     const [userRepos, setUserRepos] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -27,10 +28,10 @@ export const UserProfile = () => {
 
 
     useEffect(() => {
-        if (userData) {
+        if (userData && userRepos) {
             setIsLoading(false)
         }
-    }, [userData]);
+    }, [userData, userRepos]);
 
 
 
@@ -41,7 +42,7 @@ export const UserProfile = () => {
             <S.ProfileContainer> 
                 <S.ProfileReturn>
                     <S.ProfileReturnLogo src='/img/logo.png' />
-                    <S.ProfileReturnButton>Назад</S.ProfileReturnButton>
+                    <S.ProfileReturnButton onClick={() => {navigate(-1)}}>Назад</S.ProfileReturnButton>
                 </S.ProfileReturn>
                 {isLoading ? <LoaderUserProfile /> :
                 <S.ProfileContent>
