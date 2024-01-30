@@ -3,6 +3,7 @@ import * as S from './Main.styled'
 import { Search } from "../../Components/Search/Search"
 import { UserCard } from '../../Components/UserCard/UserCard';
 import { SearchResult } from '../../Components/SearchResult/SearchResult';
+import { PaginationBar } from '../../Components/Pagination/PaginationBar';
 
 
 export const Main = () => {
@@ -12,7 +13,6 @@ export const Main = () => {
 
     useEffect(() => {
         if (foundUsers) {
-            console.log(foundUsers);
             setQuery(searchUserByLogin)
         }
     }, [foundUsers])
@@ -25,7 +25,8 @@ export const Main = () => {
                 setSearchUserByLogin={setSearchUserByLogin} searchUserByLogin={searchUserByLogin}
                 setFoundUsers={setFoundUsers}
                 />
-                {foundUsers ? <SearchResult count={foundUsers?.total_count} query={query} setFoundUsers={setFoundUsers} /> : ''}
+                {foundUsers ? 
+                <SearchResult count={foundUsers?.total_count} query={query} setFoundUsers={setFoundUsers} /> : ''}
                 <S.MainContent>
                     {foundUsers?.items.map((user) => (
                         <UserCard key={user.id} user={user} />))

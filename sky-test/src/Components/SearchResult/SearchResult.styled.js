@@ -4,9 +4,13 @@ export const SearchResultWrapper = styled.div`
 max-width: 1178px;
 margin: 20px auto;
 padding: 31px 10px 0px;
+
+`
+export const SearchResultContainer = styled.div`
 display: flex;
 justify-content: space-between;
 `
+
 
 export const SearchResultBox = styled.div`
 
