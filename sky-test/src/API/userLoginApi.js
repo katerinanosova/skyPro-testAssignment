@@ -33,3 +33,12 @@ export const getUserByID = async (query) => {
     const data = await response.json();
     return data
 }
+
+export const getUserRepos = async (query) => {
+    
+    const response = await fetch(`https://api.github.com/users/${query}/repos`);
+
+    const data = await response.json();
+    return data
+
+}
