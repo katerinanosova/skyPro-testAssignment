@@ -3,6 +3,7 @@ import * as S from './UserProfile.styled'
 import { useEffect, useState } from 'react';
 import { getUserByID, getUserRepos } from '../../API/userLoginApi';
 import { getIsAdmin } from '../../Helpers/getUserData';
+import { LoaderUserProfile } from '../../Components/Loaders/LoaderUserProfile';
 
 export const UserProfile = () => {
 
@@ -36,13 +37,13 @@ export const UserProfile = () => {
 
 
     return (
-        isLoading ? <S.Loading>Грузимся</S.Loading> : 
         <S.ProfileWrapper>
             <S.ProfileContainer> 
                 <S.ProfileReturn>
                     <S.ProfileReturnLogo src='/img/logo.png' />
                     <S.ProfileReturnButton>Назад</S.ProfileReturnButton>
                 </S.ProfileReturn>
+                {isLoading ? <LoaderUserProfile /> :
                 <S.ProfileContent>
                     <S.ProfileImage src={userData.avatar_url} />
                     <S.ProfileDescription>
@@ -50,7 +51,7 @@ export const UserProfile = () => {
                         <S.ProfileUserRepos>Репозитории: {userRepos.length}</S.ProfileUserRepos>
                         <S.ProfileUserIsAdmin>Админ: {getIsAdmin(userData.site_admin)}</S.ProfileUserIsAdmin>
                     </S.ProfileDescription>
-                </S.ProfileContent>
+                </S.ProfileContent>}
             </S.ProfileContainer>
         </S.ProfileWrapper>
     
