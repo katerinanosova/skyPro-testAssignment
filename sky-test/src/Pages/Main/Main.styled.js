@@ -32,3 +32,10 @@ scrollbar-width: none;
   display: none;
 }
 `
+
+export const MainErrorMessage = styled.div`
+width: 100%;
+max-width: 1178px;
+margin: 20px auto;
+padding: 31px 0px 0px;
+`

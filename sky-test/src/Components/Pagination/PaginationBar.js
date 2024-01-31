@@ -3,7 +3,7 @@ import { getPagesQuantity, getVisiblePages } from '../../Helpers/getPagesQty'
 import * as S from './PaginationBar.styled'
 import { getUsersByPage } from '../../API/userLoginApi';
 
-export const PaginationBar = ({ count, query, setFoundUsers, activePage, setActivePage }) => {
+export const PaginationBar = ({ count, query, setFoundUsers, activePage, setActivePage, setError, setIsError }) => {
 
     const [ pages, setPages ] = useState([]);
     
@@ -17,7 +17,11 @@ export const PaginationBar = ({ count, query, setFoundUsers, activePage, setActi
             setFoundUsers(users)
             setActivePage(page)
         })
-        .catch((error) => {console.error(error)})
+        .catch((error) => {
+            console.error(error)
+            setIsError(true)
+            setError(error.message)
+        })
     }
 
     const maxVisiblePages = 7;

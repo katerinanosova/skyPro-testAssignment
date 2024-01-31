@@ -1,14 +1,18 @@
 import { getUsers, getUsersByPage } from '../../API/userLoginApi';
 import * as S from './Search.styled';
 
-export const Search = ({ searchUserByLogin, setSearchUserByLogin, setFoundUsers }) => {
+export const Search = ({ searchUserByLogin, setSearchUserByLogin, setFoundUsers, setError, setIsError }) => {
     
     const handleSearch = (e) => {
         e.preventDefault();
         if (searchUserByLogin.length > 0) {
             getUsersByPage({ query: searchUserByLogin, page: 1})
             .then((users) => {setFoundUsers(users);})
-            .catch((error) => {console.error('Ошибка при выполнении запроса:', error)})
+            .catch((error) => {
+                console.error('Ошибка при выполнении запроса:', error)
+                setIsError(true);
+                setError(error.message);
+            })
         }
     }
     

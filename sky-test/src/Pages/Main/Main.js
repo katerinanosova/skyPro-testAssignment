@@ -9,6 +9,8 @@ export const Main = () => {
     const [searchUserByLogin, setSearchUserByLogin] = useState('');
     const [foundUsers, setFoundUsers] = useState();
     const [query, setQuery] = useState('');
+    const [isError, setIsError] = useState(false);
+    const [error, setError] = useState();
 
     useEffect(() => {
         if (foundUsers) {
@@ -25,12 +27,14 @@ export const Main = () => {
                 setFoundUsers={setFoundUsers}
                 />
                 {foundUsers ? 
-                <SearchResult count={foundUsers?.total_count} query={query} setFoundUsers={setFoundUsers} /> : ''}
+                <SearchResult count={foundUsers?.total_count} query={query} setFoundUsers={setFoundUsers} setError={setError} setIsError={setIsError} /> : ''}
+                
+                {isError ? <S.MainErrorMessage>Ошибка! {error}</S.MainErrorMessage> :
                 <S.MainContent>
-                    {foundUsers?.items.map((user) => (
+                    {(foundUsers?.items.map((user) => (
                         <UserCard key={user.id} user={user} />))
-                    }
-                </S.MainContent>
+                    )}
+                </S.MainContent>}
             </S.Container>
         </S.Wrapper>
         

@@ -3,7 +3,7 @@ import * as S from './SearchResult.styled'
 import { getUsersSort } from '../../API/userLoginApi';
 import { PaginationBar } from '../Pagination/PaginationBar';
 
-export const SearchResult = ({ count, query, setFoundUsers }) => {
+export const SearchResult = ({ count, query, setFoundUsers, setIsError, setError }) => {
 
     const [sortIsVisible, setSortIsVisible] = useState(false);
     const [isAscSortActive, setIsAscSortActive] = useState(false);
@@ -27,7 +27,11 @@ export const SearchResult = ({ count, query, setFoundUsers }) => {
 
         getUsersSort({ query, sortOrder, page: activePage })
         .then((users) => {setFoundUsers(users);})
-        .catch((error) => {console.error('Ошибка при выполнении запроса:', error)})
+        .catch((error) => {
+            console.error('Ошибка при выполнении запроса:', error)
+            setIsError(true)
+            setError(error.message)
+        })
     }
 
     return (
@@ -41,7 +45,7 @@ export const SearchResult = ({ count, query, setFoundUsers }) => {
                     </S.SortList>
                 </S.SearchSortBox>
             </S.SearchResultContainer>
-            <PaginationBar count={count} query={query} setFoundUsers={setFoundUsers} activePage={activePage} setActivePage={setActivePage} />
+            <PaginationBar count={count} query={query} setFoundUsers={setFoundUsers} activePage={activePage} setActivePage={setActivePage} setError={setError} setIsError={setIsError} />
         </S.SearchResultWrapper>
     )
 }
