@@ -22,6 +22,7 @@ export const Main = () => {
     return (
         <S.Wrapper>
             <S.Container>
+                <S.MainTitle>GitHub Users Search</S.MainTitle>
                 <Search 
                 setSearchUserByLogin={setSearchUserByLogin} searchUserByLogin={searchUserByLogin}
                 setFoundUsers={setFoundUsers}

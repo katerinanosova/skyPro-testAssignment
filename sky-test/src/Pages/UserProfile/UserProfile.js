@@ -42,7 +42,7 @@ export const UserProfile = () => {
             <S.ProfileContainer> 
                 <S.ProfileReturn>
                     <S.ProfileReturnLogo src='/img/logo.png' />
-                    <S.ProfileReturnButton onClick={() => {navigate(-1)}}>Назад</S.ProfileReturnButton>
+                    <S.ProfileReturnButton onClick={() => {navigate(-1)}}>Новый поиск</S.ProfileReturnButton>
                 </S.ProfileReturn>
                 {isLoading ? <LoaderUserProfile /> :
                 <S.ProfileContent>

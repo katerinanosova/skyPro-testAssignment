@@ -16,6 +16,14 @@ export const Container = styled.div`
   background-color: #ffffff;
 `;
 
+export const MainTitle = styled.h1`
+width: 100%;
+max-width: 1178px;
+margin: 20px auto;
+padding: 31px 0px 0px;
+
+`
+
 export const MainContent = styled.div`
 width: 100%;
 max-width: 1178px;
