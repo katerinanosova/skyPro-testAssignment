@@ -9,3 +9,13 @@ export const getPagesQuantity = (count) => {
     return pages
 
 }
+
+export const getVisiblePages = ({ pages, activePage }) => {
+    const maxVisiblePages = 7;
+    const firstVisiblePage = Math.max(1, activePage - Math.floor(maxVisiblePages / 2));
+    const lastVisiblePage = Math.min(pages.length, firstVisiblePage + maxVisiblePages - 1);
+
+    const visiblePages = pages.slice(firstVisiblePage - 1, lastVisiblePage);
+
+    return visiblePages
+}

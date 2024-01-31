@@ -8,6 +8,7 @@ export const SearchResult = ({ count, query, setFoundUsers }) => {
     const [sortIsVisible, setSortIsVisible] = useState(false);
     const [isAscSortActive, setIsAscSortActive] = useState(false);
     const [isDescSortActive, setIsDescSortActive] = useState(false);
+    const [ activePage, setActivePage ] = useState(1);
 
     const sortAppear = () => {
         setSortIsVisible(!sortIsVisible);
@@ -24,7 +25,7 @@ export const SearchResult = ({ count, query, setFoundUsers }) => {
             setIsDescSortActive(true);
         }
 
-        getUsersSort({ query, sortOrder })
+        getUsersSort({ query, sortOrder, page: activePage })
         .then((users) => {setFoundUsers(users);})
         .catch((error) => {console.error('Ошибка при выполнении запроса:', error)})
     }
@@ -40,7 +41,7 @@ export const SearchResult = ({ count, query, setFoundUsers }) => {
                     </S.SortList>
                 </S.SearchSortBox>
             </S.SearchResultContainer>
-            <PaginationBar count={count} query={query} setFoundUsers={setFoundUsers} />
+            <PaginationBar count={count} query={query} setFoundUsers={setFoundUsers} activePage={activePage} setActivePage={setActivePage} />
         </S.SearchResultWrapper>
     )
 }

@@ -3,7 +3,7 @@ export const getUsers = async (userLoginQuery) => {
     const queryString = encodeURIComponent(`${userLoginQuery} in:login`);
 
     const response = await fetch(`https://api.github.com/search/users?q=${queryString}`);
-    console.log(queryString);
+
 
     const data = await response.json();
     return data
@@ -14,18 +14,18 @@ export const getUsersByPage = async ({ query, page }) => {
     const queryString = encodeURIComponent(`${query} in:login`);
 
     const response = await fetch(`https://api.github.com/search/users?q=${queryString}&page=${page}`);
-    console.log(queryString);
 
     const data = await response.json();
     return data
 
 }
 
-export const getUsersSort = async ({ query, sortOrder }) => {
+export const getUsersSort = async ({ query, sortOrder, page }) => {
 
     const queryString = encodeURIComponent(`${query} in:login sort:repositories-${sortOrder}`);
+    console.log(queryString);
 
-    const response = await fetch(`https://api.github.com/search/users?q=${queryString}`);
+    const response = await fetch(`https://api.github.com/search/users?q=${queryString}&page=${page}`);
 
     const data = await response.json();
     return data
