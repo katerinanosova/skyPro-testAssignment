@@ -37,7 +37,7 @@ export const PaginationBar = ({ count, query, setFoundUsers, activePage, setActi
         <S.PaginationBarContent>
             <S.PaginationBarReturnButton onClick={() => goToPage(activePage - 1)} src='./img/return.png' />
             {getVisiblePages({ pages, activePage }).map((page) => (
-                <S.PaginationBarPage key={page.index} $isActive={activePage === page.pageNumber} onClick={() => goToPage(page.pageNumber)}>{page.pageNumber}</S.PaginationBarPage>
+                <S.PaginationBarPage key={page.pageNumber} $isActive={activePage === page.pageNumber} onClick={() => goToPage(page.pageNumber)}>{page.pageNumber}</S.PaginationBarPage>
             ))}
 
             {pages.length > maxVisiblePages && activePage <= pages.length - maxVisiblePages && (

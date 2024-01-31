@@ -3,7 +3,6 @@ import * as S from './Main.styled'
 import { Search } from "../../Components/Search/Search"
 import { UserCard } from '../../Components/UserCard/UserCard';
 import { SearchResult } from '../../Components/SearchResult/SearchResult';
-import { PaginationBar } from '../../Components/Pagination/PaginationBar';
 
 
 export const Main = () => {
