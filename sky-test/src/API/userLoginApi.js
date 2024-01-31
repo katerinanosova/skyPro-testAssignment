@@ -18,7 +18,6 @@ export const getUsersByPage = async ({ query, page }) => {
 export const getUsersSort = async ({ query, sortOrder, page }) => {
 
     const queryString = encodeURIComponent(`${query} in:login sort:repositories-${sortOrder}`);
-    console.log(queryString);
 
     const response = await fetch(`https://api.github.com/search/users?q=${queryString}&page=${page}`);
 
@@ -57,7 +56,7 @@ export const getUserRepos = async (query) => {
     } else if (response.status === 503) {
         throw new Error("Сервер нихт арбайтен");
     }
-    
+
     const data = await response.json();
     return data
 
