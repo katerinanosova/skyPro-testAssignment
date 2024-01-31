@@ -27,7 +27,8 @@ export const PaginationBar = ({ count, query, setFoundUsers, activePage, setActi
     const maxVisiblePages = 7;
 
     const showMorePages = () => {
-        const newMaxVisiblePages = maxVisiblePages + 7;
+        const visiblePagesStep = 7;
+        const newMaxVisiblePages = maxVisiblePages + visiblePagesStep;
         if (newMaxVisiblePages > pages.length) {
           setActivePage(pages.length);
         } else {
